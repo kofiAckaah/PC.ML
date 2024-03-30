@@ -1,0 +1,97 @@
+﻿@page "/checkprice"
+
+<EditForm Model="@requestDto" OnValidSubmit="CheckPrice">
+    <div class="mud-error-text">
+        <ValidationSummary />
+    </div>
+
+    <MudGrid>
+        <MudItem xs="12" sm="7" md="7">
+            <MudCard>
+                <MudCardContent>
+                    <MudGrid>
+                        <MudItem xs="12" sm="6" md="6">
+                            <MudTextField T="string" Label="CPU" Placeholder="Enter CPU type. eg. i5" 
+                                Class="mt-3" @bind-Value="requestDto.CPU"
+                                          For="@(() => requestDto.CPU)" Variant="Variant.Outlined" />
+                        </MudItem>
+                        <MudItem xs="12" sm="6" md="6">
+                            <MudNumericField T="float" Min="1" Label="Processor speed" Class="mt-3"
+                                             Placeholder="Enter GHz. eg. 1GHz" @bind-Value="requestDto.GHz"
+                                             For="@(() => requestDto.GHz)" Adornment="Adornment.End"
+                                             AdornmentText="GHz" Variant="Variant.Outlined" />
+                        </MudItem>
+                    </MudGrid>
+                    <MudGrid>
+                        <MudItem xs="12" sm="6" md="6">
+                            <MudTextField T="string" Label="GPU" Placeholder="Enter GPU type. eg. Intel" 
+                                Class="mt-3" @bind-Value="requestDto.GPU"
+                                          For="@(() => requestDto.GPU)" Variant="Variant.Outlined" />
+                        </MudItem>
+                        <MudItem xs="12" sm="6" md="6">
+                            <MudNumericField T="float" Min="1" Label="RAM" Class="mt-3"
+                                             Placeholder="Enter RAM size. eg. 4GB" @bind-Value="requestDto.RAM"
+                                             For="@(() => requestDto.RAM)" Adornment="Adornment.End"
+                                             AdornmentText="GB" Variant="Variant.Outlined" />
+                        </MudItem>
+                    </MudGrid>
+                    <MudGrid>
+                        <MudItem xs="12" sm="6" md="6">
+                            <MudTextField T="string" Label="RAM Type" Placeholder="Enter RAM type. eg. DDR3" Class="mt-3"
+                                          @bind-Value="requestDto.RAMType" Variant="Variant.Outlined"
+                                          For="@(() => requestDto.RAMType)" />
+                        </MudItem>
+                        <MudItem xs="12" sm="6" md="6">
+                            <MudNumericField T="float" Min="1" Label="Screen Size" Class="mt-3"
+                                             Placeholder="Enter Screen size. eg. 13inches" @bind-Value="requestDto.Screen"
+                                             For="@(() => requestDto.Screen)" Adornment="Adornment.End"
+                                             AdornmentText="in" Variant="Variant.Outlined" />
+                        </MudItem>
+                    </MudGrid>
+                    <MudGrid>
+                        <MudItem xs="12" sm="6" md="6">
+                            <MudNumericField T="float" Min="1" Label="Storage Capacity" Class="mt-3"
+                                             Placeholder="Enter storage size. eg. 250GB" @bind-Value="requestDto.Storage"
+                                             For="@(() => requestDto.Storage)" Adornment="Adornment.End"
+                                             AdornmentText="GB" Variant="Variant.Outlined" />
+                        </MudItem>
+                        <MudItem xs="12" sm="6" md="6">
+                            <MudNumericField T="float" Min="1" Label="Weight" Class="mt-3"
+                                             Placeholder="Enter laptop weight" @bind-Value="requestDto.Weight"
+                                             For="@(() => requestDto.Weight)" Adornment="Adornment.End"
+                                             AdornmentText="kg" Variant="Variant.Outlined" />
+                        </MudItem>
+                    </MudGrid>
+                    <MudGrid Class="align-center">
+                        <MudItem xs="12" sm="4" md="4">
+                            <MudCheckBox T="bool" Label="Is storage SSD?" @bind-Checked="requestDto.SSD" />
+                        </MudItem>
+                        <MudItem xs="12" sm="8" md="8">
+                            <MudGrid>
+                                <MudItem xs="12" sm="6" md="6">
+                                    <MudButton ButtonType="ButtonType.Button" Variant="Variant.Filled"
+                                               Color="Color.Error" Class="ml-auto" FullWidth="true"
+                                               OnClick="(()=>Reset())">
+                                        Reset
+                                    </MudButton>
+                                </MudItem>
+                                <MudItem xs="12" sm="6" md="6">
+                                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled"
+                                               Color="Color.Primary" Class="ml-auto" FullWidth="true">
+                                        Check Price
+                                    </MudButton>
+                                </MudItem>
+                            </MudGrid>
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" sm="5" md="5">
+            <MudPaper Class="pa-4 mud-height-full">
+                <MudText Typo="Typo.h4">Results.</MudText>
+                <MudText Typo="Typo.subtitle1" Color="Color.Success">@price</MudText>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</EditForm>

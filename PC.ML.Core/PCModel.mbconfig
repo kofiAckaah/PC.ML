@@ -1,0 +1,321 @@
+﻿{
+  "Scenario": "Regression",
+  "DataSource": {
+    "Version": 3,
+    "EscapeCharacter": "\"",
+    "ReadMultiLines": false,
+    "KeepDiacritics": false,
+    "KeepPunctuations": false,
+    "AllowQuoting": false,
+    "Type": "TabularFile",
+    "FilePath": "C:\\Users\\Admin\\Downloads\\laptopprices.tsv",
+    "Delimiter": "\t",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "CPU",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "GHz",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "GPU",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "RAM",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "RAMType",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Screen",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Storage",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "SSD",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Boolean",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Weight",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Price",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastForestRegression",
+        "Score": 0.61504404870115625,
+        "RuntimeInSeconds": 0.906,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e4",
+          "e0": {
+            "OutputColumnNames": [
+              "CPU",
+              "GPU",
+              "RAMType",
+              "SSD"
+            ],
+            "InputColumnNames": [
+              "CPU",
+              "GPU",
+              "RAMType",
+              "SSD"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "GHz",
+              "RAM",
+              "Screen",
+              "Storage",
+              "Weight"
+            ],
+            "InputColumnNames": [
+              "GHz",
+              "RAM",
+              "Screen",
+              "Storage",
+              "Weight"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "CPU",
+              "GPU",
+              "RAMType",
+              "SSD",
+              "GHz",
+              "RAM",
+              "Screen",
+              "Storage",
+              "Weight"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e4": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "Price",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LbfgsPoissonRegressionRegression",
+        "Score": 0.57080058234273989,
+        "RuntimeInSeconds": 0.296,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e6",
+          "e0": {
+            "OutputColumnNames": [
+              "CPU",
+              "GPU",
+              "RAMType",
+              "SSD"
+            ],
+            "InputColumnNames": [
+              "CPU",
+              "GPU",
+              "RAMType",
+              "SSD"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "GHz",
+              "RAM",
+              "Screen",
+              "Storage",
+              "Weight"
+            ],
+            "InputColumnNames": [
+              "GHz",
+              "RAM",
+              "Screen",
+              "Storage",
+              "Weight"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "CPU",
+              "GPU",
+              "RAMType",
+              "SSD",
+              "GHz",
+              "RAM",
+              "Screen",
+              "Storage",
+              "Weight"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e6": {
+            "L1Regularization": 1.0,
+            "L2Regularization": 1.0,
+            "LabelColumnName": "Price",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastTreeRegression",
+        "Score": -1.842534874797024,
+        "RuntimeInSeconds": 0.174,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3",
+          "e0": {
+            "OutputColumnNames": [
+              "CPU",
+              "GPU",
+              "RAMType",
+              "SSD"
+            ],
+            "InputColumnNames": [
+              "CPU",
+              "GPU",
+              "RAMType",
+              "SSD"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "GHz",
+              "RAM",
+              "Screen",
+              "Storage",
+              "Weight"
+            ],
+            "InputColumnNames": [
+              "GHz",
+              "RAM",
+              "Screen",
+              "Storage",
+              "Weight"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "CPU",
+              "GPU",
+              "RAMType",
+              "SSD",
+              "GHz",
+              "RAM",
+              "Screen",
+              "Storage",
+              "Weight"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 254,
+            "FeatureFraction": 1.0,
+            "LearningRate": 0.099999999999999978,
+            "LabelColumnName": "Price",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "OneHotEncoding",
+      "e1": "ReplaceMissingValues",
+      "e2": "Concatenate",
+      "e3": "FastTreeRegression",
+      "e4": "FastForestRegression",
+      "e5": "LightGbmRegression",
+      "e6": "LbfgsPoissonRegressionRegression",
+      "e7": "SdcaRegression"
+    },
+    "Schema": "e0 * e1 * e2 * (e3 + e4 + e5 + e6 + e7)",
+    "MetricName": "RSquared",
+    "ModelFilePath": "C:\\Users\\Admin\\Documents\\GitRepos\\kofiAckaah\\PC.ML\\PC.ML.Core\\PCModel.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 5,
+  "TrainingOption": {
+    "Version": 2,
+    "Subsampling": false,
+    "Type": "RegressionTrainingOption",
+    "TrainingTime": 10,
+    "LabelColumn": "Price",
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "CrossValidationValidationOption",
+      "NumberOfFolds": 5
+    }
+  }
+}
